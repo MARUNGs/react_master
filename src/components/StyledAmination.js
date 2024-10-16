@@ -20,6 +20,11 @@ const animationRotate = keyframes`
     border-radius: 0px;
   }
 `;
+
+// span 태그로 선언한 이모지 컴포넌트
+const Emoji = styled.span`
+  font-size: 36px;
+`;
 const Box = styled.div`
   display: flex;
   justify-content: center;
@@ -29,8 +34,7 @@ const Box = styled.div`
   background-color: steelblue;
   animation: ${animationRotate} 1s linear infinite;
 
-  span {
-    font-size: 36px;
+  ${Emoji /*위에서 선언한 스타일 컴포넌트*/} {
     &:hover {
       font-size: 80px;
     }
@@ -45,9 +49,11 @@ export default function StyledAmination() {
   return (
     <Wrapper>
       <Box>
-        {/* Box component 안에 있는 태그에게 스타일을 줄 수 있을까? */}
-        <span>😍</span>
+        {/* span 태그로 정의된 컴포넌트지만, as props를 활용하여 p로 전환시키기 */}
+        <Emoji as="p">😍</Emoji>
       </Box>
+
+      <Emoji>😎</Emoji>
     </Wrapper>
   );
 }
